@@ -1,0 +1,6 @@
+<Context> 
+    <Resource name="jdbc/dataSourceTest" auth="Container" type="javax.sql.DataSource" 
+    maxActive="100" maxIdle="30" maxWait="10000" 
+    username="BORAD" password="BORAD" driverClassName="oracle.jdbc.driver.OracleDriver" 
+    url="jdbc:oracle:thin:board@//localhost:1521/xe"/> 
+</Context> 
