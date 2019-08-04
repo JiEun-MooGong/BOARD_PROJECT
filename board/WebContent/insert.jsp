@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>Insert title here</title>
+<title> 게시글 등록 </title>
 <% 
 
 	request.setCharacterEncoding("euc-kr");
@@ -18,11 +18,17 @@
 	
 	//유효성 검사
 	if(strTitle==""||strTitle==null)
-	{ out.println("제목을 입력해주세요.");}
+	{ out.println("제목을 입력해주세요.<hr>");
+	  out.print("<input type=\"button\" value=\"BACK\" onClick=\"history.go(-1)\">");
+	  return;}
 	if(strWriter==""||strWriter==null)
-	{ out.println("작성자를 입력해주세요.");}
+	{ out.println("작성자를 입력해주세요.<hr>");
+		out.print("<input type=\"button\" value=\"BACK\" onClick=\"history.go(-1)\">");
+	  return;}
 	if(strContent==""||strContent==null)
-	{ out.println("내용을 입력해주세요.");}
+	{ out.println("내용을 입력해주세요.<hr>");
+		out.print("<input type=\"button\" value=\"BACK\" onClick=\"history.go(-1)\">");
+	  return;}
 	
 	try
 	{

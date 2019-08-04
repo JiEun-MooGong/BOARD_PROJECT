@@ -3,14 +3,25 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>Insert title here</title>
+<title> 게시글 작성 </title>
+<style>
+label {
+            float: left;
+            clear: left;
+            width: 7em;
+        }
+</style>
 </head>
 <body>
 	<form action="insert.jsp" method="post" onsubmit="return formCheck();">
-	제목 : <input type ="text" name ="title"/><br>
-	작성자 : <input type ="text" name ="writer"/><br>
-	내용 : <input type ="text" name ="content"/><br>
-    <input type ="submit" name ="submit"/>
+	<label for="title">제목 </label>
+	<input type ="text" name ="title" id ="title"/><br>
+	<label for="writer">작성자 </label>
+	<input type ="text" name ="writer" id ="writer"/><br>
+	<label for="content">내용 </label>
+	<textarea rows="10" cols="40" name="content" id="content"></textarea>	
+	<br><br>
+    <input type ="submit" name ="submit"/>    
 	</form>
 </body>
 </html>
