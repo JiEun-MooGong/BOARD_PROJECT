@@ -4,7 +4,14 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title> 게시글 보기 </title>
+<title> 게시글 수정 </title>
+<style>
+label {
+            float: left;
+            clear: left;
+            width: 7em;
+        }
+</style>
 </head>
 <% 
 try
@@ -52,14 +59,13 @@ try
 	out.print("</tr>");
 	out.print("<tr>");
 	out.print("<th>내용</th>");
-	out.print("<td>" + rs.getString("CONTENT") + "</td>");
+	out.print("<td> <textarea rows=\'10\' cols=\'40\' name=\'content\' id=\'content\''>" + rs.getString("CONTENT") + "</textarea> </td>");
 	out.print("</tr>");
 %>
 	</table>
 	<br>
-	<a href="reWrite.jsp?idx=<%=rs.getString("IDX")%>">수정 </a>
-	<a href="delete.jsp?idx=<%=rs.getString("IDX")%>">삭제 </a>
-	<a href="index.jsp">목록으로</a>
+	<a href="update.jsp?idx=<%=rs.getString("IDX")%>">확인 </a>
+	<a href="content.jsp?idx=<%=rs.getString("IDX")%>">취소 </a>
 	</body>
 <%
 	}
