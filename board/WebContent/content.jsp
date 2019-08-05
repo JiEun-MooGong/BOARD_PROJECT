@@ -20,8 +20,12 @@ try
 		
 	Statement stmt = con.createStatement();
 	String strSql = "";
-	strSql += "SELECT * FROM BOARD WHERE IDX = " + strIdx;	
+	//Á¶È¸¼ö  UP
+	strSql = "UPDATE BOARD SET COUNT = COUNT + 1 WHERE IDX = " + strIdx;	
 	ResultSet rs = stmt.executeQuery(strSql);
+	
+	strSql = "SELECT * FROM BOARD WHERE IDX = " + strIdx;	
+	rs = stmt.executeQuery(strSql);
 	
 	while(rs.next())
 	{

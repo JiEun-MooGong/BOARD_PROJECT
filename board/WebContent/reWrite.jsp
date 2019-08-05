@@ -35,6 +35,7 @@ try
 %>
 <body>
 <h1>게시글</h1>
+<form method = "post" action="update.jsp?idx=<%=strIdx%>">
 	<table border="1">
 <% 
 	out.print("<tr>");
@@ -55,7 +56,7 @@ try
 	out.print("</tr>");
 	out.print("<tr>");
 	out.print("<th>제목</th>");
-	out.print("<td>" + rs.getString("TITLE") + "</td>");
+	out.print("<td> <input type=\'text\' name=\'title\' id\'title\' value=\'" + rs.getString("TITLE") + "\'></td>");
 	out.print("</tr>");
 	out.print("<tr>");
 	out.print("<th>내용</th>");
@@ -64,7 +65,9 @@ try
 %>
 	</table>
 	<br>
-	<a href="update.jsp?idx=<%=rs.getString("IDX")%>">확인 </a>
+	<button type="submit">확인</button>
+	<%-- <a href="update.jsp?idx=<%=rs.getString("IDX")%>">확인 </a> --%> 
+	</form>
 	<a href="content.jsp?idx=<%=rs.getString("IDX")%>">취소 </a>
 	</body>
 <%

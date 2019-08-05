@@ -7,9 +7,11 @@
 <title>수정</title>
 </head>
 <% 
+request.setCharacterEncoding("euc-kr");
+
 String strIdx = request.getParameter("idx");
-String strContent = "";
-out.print("<script language='JavaScript>'>strContent = document.getElementById('content')</scrtip>");
+String strTitle = request.getParameter("title");
+String strContent = request.getParameter("content");
 
 try
 {	
@@ -21,11 +23,12 @@ try
 	out.println("db 접속 성공");
 	out.println("inext" + strIdx);
 	out.println("content" + strContent);
-		
+	
 	//입력
 	Statement stmt = con.createStatement();
 	String strSql = "";
 	strSql += "UPDATE BOARD SET";
+	strSql += " TITLE='" + strTitle + "',";
 	strSql += " CONTENT='" + strContent + "'";
 	strSql += " WHERE IDX = " + strIdx;
 	stmt.executeUpdate(strSql);
