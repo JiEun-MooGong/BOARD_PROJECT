@@ -63,7 +63,7 @@ try
 	<br>
 	<a href="reWrite.jsp?idx=<%=rs.getString("IDX")%>">수정 </a>
 	<a href="delete.jsp?idx=<%=rs.getString("IDX")%>">삭제 </a>
-	<a href="index.jsp">목록으로</a>
+	<a href="list.jsp">목록으로</a>
 	</body>
 <%
 	}
