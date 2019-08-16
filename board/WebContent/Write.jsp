@@ -12,12 +12,15 @@ label {
         }
 </style>
 </head>
+<%
+    String strUserId = (String)session.getAttribute("userid");
+%>
 <body>
 	<form action="insert.jsp" method="post" onsubmit="return formCheck();">
 	<label for="title">제목 </label>
 	<input type ="text" name ="title" id ="title"/><br>
 	<label for="writer">작성자 </label>
-	<input type ="text" name ="writer" id ="writer"/><br>
+	<input type ="text" name ="writer" id ="writer" value="<%=strUserId%>" readonly /><br>
 	<label for="content">내용 </label>
 	<textarea rows="10" cols="40" name="content" id="content"></textarea>	
 	<br><br>

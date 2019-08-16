@@ -51,7 +51,9 @@
 		else
 		{
 			out.println(strName + "님 환영합니다.<hr>");
-			out.print("<input type=\"button\" value=\"OK\" onClick=\"location.href='list.jsp'\">");
+			session.setAttribute("userid",strId);
+			response.sendRedirect("list.jsp");
+			//out.print("<input type=\"button\" value=\"OK\" onClick=\"location.href='list.jsp'\">");
 		}
 		
 		// 클로즈

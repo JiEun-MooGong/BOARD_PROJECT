@@ -10,6 +10,7 @@
 try
 {
 	String strIdx = request.getParameter("idx");
+	String strUserId = (String)session.getAttribute("userid");
 	
 	// DB 접속
 	String strDN = "oracle.jdbc.driver.OracleDriver"; 
@@ -32,8 +33,8 @@ try
 %>
 <body>
 <h1>게시글</h1>
-	<table border="1">
 <% 
+	out.print("<table border=\"1\">");
 	out.print("<tr>");
 	out.print("<th>번호</th>");
 	out.print("<td>" + rs.getString("IDX") + "</td>");
@@ -58,11 +59,17 @@ try
 	out.print("<th>내용</th>");
 	out.print("<td>" + rs.getString("CONTENT") + "</td>");
 	out.print("</tr>");
+	out.print("</table>");
+	out.print("<br>");
+	
+	String strWriter = rs.getString("WRITER");
+	
+	if(strWriter.equals(strUserId))
+	{
+		out.print("<a href=\"reWrite.jsp?idx=" + rs.getString("IDX") + "\">수정 </a>");
+		out.print("<a href=\"delete.jsp?idx=" + rs.getString("IDX") + "\">삭제 </a>");
+	}
 %>
-	</table>
-	<br>
-	<a href="reWrite.jsp?idx=<%=rs.getString("IDX")%>">수정 </a>
-	<a href="delete.jsp?idx=<%=rs.getString("IDX")%>">삭제 </a>
 	<a href="list.jsp">목록으로</a>
 	</body>
 <%

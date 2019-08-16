@@ -39,6 +39,12 @@ try
 //  PreparedStatement pstmt=con.prepareStatement(strSql);
 //  ResultSet rs = pstmt.executeQuery();
 
+	String strUserId = (String)session.getAttribute("userid");
+			
+	out.println(strUserId + " ");
+	out.print("<input type=\"button\" value=\"로그아웃\" onClick=\"location.href='Login.html'\">");
+	out.println("<hr>");
+	
 	// DB 접속
 	String strDN = "oracle.jdbc.driver.OracleDriver"; 
 	String url ="jdbc:oracle:thin:board@//localhost:1521/xe";
@@ -68,7 +74,7 @@ try
 	{
 		out.print("<tr>");
 		out.print("<td>" + rs.getString("IDX") + "</td>");
-		out.print("<td>" + "<a href='content.jsp?idx="+ rs.getString("IDX") +"'>" + rs.getString("TITLE")+"</a>" + "</td>");
+		out.print("<td>" + "<a href='content.jsp?idx="+ rs.getString("IDX") + "'>" + rs.getString("TITLE")+"</a>" + "</td>");
 		out.print("<td>" + rs.getString("WRITER") + "</td>");
 		out.print("<td>" + rs.getString("REGDATE") + "</td>");
 		out.print("<td>" + rs.getString("COUNT") + "</td>");
@@ -76,7 +82,6 @@ try
 	}
 %>
 	</table>
-	
 	<a class="btn" href="Write.jsp">글쓰기</a>
 </div>
 
