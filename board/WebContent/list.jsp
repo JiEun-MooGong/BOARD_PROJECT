@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title> 무공이의 게시판 만들기 </title>
+<title> 무공이의 게시판 만들기 - 게시글 </title>
 <style>
     table {border-collapse: collapse;  margin-left: auto; margin-right: auto;}
       th {background-color: yellowgreen; border:1px solid black; padding: 10px;}
@@ -50,7 +50,6 @@ try
 	String url ="jdbc:oracle:thin:board@//localhost:1521/xe";
 	Class.forName(strDN);
 	Connection con = DriverManager.getConnection(url,"board","board");
-	out.println("db 접속 성공");
 		
 	Statement stmt = con.createStatement();
 	String strSql = "";
@@ -60,7 +59,7 @@ try
 
 <body>
 <div class="center">
-	<h1> 게시글 </h1>
+	<h2> 게시글 목록 </h2>
 	<table>
 	<tr>
 		<th width = "50px">번호</th>

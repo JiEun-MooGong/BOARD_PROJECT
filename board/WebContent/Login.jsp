@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title> 로그인 </title>
+<title> 무공이의 게시판 만들기 - 로그인 </title>
   </head>
   <% 
 	request.setCharacterEncoding("euc-kr");
@@ -31,7 +31,6 @@
 		String url ="jdbc:oracle:thin:board@//localhost:1521/xe";
 		Class.forName(strDN);
 		Connection con = DriverManager.getConnection(url,"board","board");
-		out.println("db 접속 성공");
 		
 		//입력
 		Statement stmt = con.createStatement();

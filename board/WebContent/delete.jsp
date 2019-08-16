@@ -4,11 +4,21 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title> 삭제 </title>
+<title> 무공이의 게시판 만들기 - 게시글 삭제 </title>
 </head>
+<script type="text/javascript">
+if(confirm("삭제 하시겠습니까?"))
+{	
+}
+esle
+{
+	location.href=history.go(-1);
+	return;
+}
+</script>
 <% 
 try
-{
+{	
 	String strIdx = request.getParameter("idx");
 	
 	// DB 접속
@@ -16,7 +26,6 @@ try
 	String url ="jdbc:oracle:thin:board@//localhost:1521/xe";
 	Class.forName(strDN);
 	Connection con = DriverManager.getConnection(url,"board","board");
-	out.println("db 접속 성공");
 		
 	//입력
 	Statement stmt = con.createStatement();

@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title> 게시글 등록 </title>
+<title> 무공이의 게시판 만들기 - 게시글 등록 </title>
 <% 
 
 	request.setCharacterEncoding("euc-kr");
@@ -37,7 +37,6 @@
 		String url ="jdbc:oracle:thin:board@//localhost:1521/xe";
 		Class.forName(strDN);
 		Connection con = DriverManager.getConnection(url,"board","board");
-		out.println("db 접속 성공");
 		
 		//입력
 		Statement stmt = con.createStatement();
@@ -46,7 +45,7 @@
 		strSql += "(IDX, TITLE,WRITER,REGDATE,COUNT,CONTENT)";
 		strSql += "VALUES(BOARD_SEQ.NEXTVAL, '"+strTitle+"','"+strWriter+"',(SELECT TO_CHAR(SYSDATE, 'YYYY-MM-DD') FROM DUAL),1,'"+strContent+"')";
 		stmt.executeUpdate(strSql);
-		out.println("db 저장 완료 되었습니다.");
+		out.println("글 등록 완료.");
 		
 		// 클로즈
 		con.close();

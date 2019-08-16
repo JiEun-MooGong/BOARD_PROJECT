@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title> 게시글 보기 </title>
+<title> 무공이의 게시판 만들기 - 게시글 보기 </title>
 </head>
 <% 
 try
@@ -17,7 +17,6 @@ try
 	String url ="jdbc:oracle:thin:board@//localhost:1521/xe";
 	Class.forName(strDN);
 	Connection con = DriverManager.getConnection(url,"board","board");
-	out.println("db 접속 성공");
 		
 	Statement stmt = con.createStatement();
 	String strSql = "";

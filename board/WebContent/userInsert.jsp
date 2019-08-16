@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title> 회원가입등록 </title>
+<title> 무공이의 게시판 만들기 - 회원가입 </title>
 </head>
 <% 
 	request.setCharacterEncoding("euc-kr");

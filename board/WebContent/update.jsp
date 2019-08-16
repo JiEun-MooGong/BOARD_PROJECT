@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>수정</title>
+<title> 무공이의 게시판 만들기 - 게시글 수정 </title>
 </head>
 <% 
 request.setCharacterEncoding("euc-kr");
@@ -20,7 +20,7 @@ try
 	String url ="jdbc:oracle:thin:board@//localhost:1521/xe";
 	Class.forName(strDN);
 	Connection con = DriverManager.getConnection(url,"board","board");
-	out.println("db 접속 성공");
+	
 	out.println("inext" + strIdx);
 	out.println("content" + strContent);
 	

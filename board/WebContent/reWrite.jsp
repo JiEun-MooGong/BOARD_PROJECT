@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title> 게시글 수정 </title>
+<title> 무공이의 게시판 만들기 - 게시글 수정 </title>
 <style>
 label {
             float: left;
@@ -13,6 +13,8 @@ label {
         }
 </style>
 </head>
+<body>
+<h2>게시글</h2>
 <% 
 try
 {
@@ -23,7 +25,6 @@ try
 	String url ="jdbc:oracle:thin:board@//localhost:1521/xe";
 	Class.forName(strDN);
 	Connection con = DriverManager.getConnection(url,"board","board");
-	out.println("db 접속 성공");
 		
 	Statement stmt = con.createStatement();
 	String strSql = "";
@@ -33,8 +34,7 @@ try
 	while(rs.next())
 	{
 %>
-<body>
-<h1>게시글</h1>
+
 <form method = "post" action="update.jsp?idx=<%=strIdx%>">
 	<table border="1">
 <% 
