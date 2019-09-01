@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ page import ="java.sql.*" %>
 <%@ page import="javax.sql.*" %>
 <%@ page import="javax.naming.*" %>
@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title> ¹«°øÀÌÀÇ °Ô½ÃÆÇ ¸¸µé±â - °Ô½Ã±Û </title>
+<title> ë¬´ê³µì´ì˜ ê²Œì‹œíŒ ë§Œë“¤ê¸° - ê²Œì‹œê¸€ </title>
 <style>
     table {border-collapse: collapse;  margin-left: auto; margin-right: auto;}
       th {background-color: yellowgreen; border:1px solid black; padding: 10px;}
@@ -31,21 +31,23 @@
 <% 
 try
 {
-	// DB Á¢¼Ó
+	// DB ì ‘ì†
 //	Context init = new InitialContext();
 //  DataSource ds = (DataSource) init.lookup("jdbc/dataSourceTest");
 //	Connection con =ds.getConnection();	
-//	out.println("db Á¢¼Ó ¼º°ø");
+//	out.println("db ì ‘ì† ì„±ê³µ");
 //  PreparedStatement pstmt=con.prepareStatement(strSql);
 //  ResultSet rs = pstmt.executeQuery();
 
+	String strSelKey = request.getParameter("SelKey");
+	String strSelVal = request.getParameter("SelVal");
 	String strUserId = (String)session.getAttribute("userid");
-			
+	
 	out.println(strUserId + " ");
-	out.print("<input type=\"button\" value=\"·Î±×¾Æ¿ô\" onClick=\"location.href='Login.html'\">");
+	out.print("<input type=\"button\" value=\"ë¡œê·¸ì•„ì›ƒ\" onClick=\"location.href='Login.html'\">");
 	out.println("<hr>");
 	
-	// DB Á¢¼Ó
+	// DB ì ‘ì†
 	String strDN = "oracle.jdbc.driver.OracleDriver"; 
 	String url ="jdbc:oracle:thin:board@//localhost:1521/xe";
 	Class.forName(strDN);
@@ -53,20 +55,31 @@ try
 		
 	Statement stmt = con.createStatement();
 	String strSql = "";
-	strSql += "SELECT * FROM BOARD ORDER BY IDX DESC";	
+	strSql += "SELECT * FROM BOARD";
+
+	if(strSelKey == null)
+		strSql += " ";
+	else if(strSelKey.equals("1"))
+		strSql += " WHERE TITLE LIKE '"+ strSelVal +"%'"; 
+	else if(strSelKey.equals("2"))
+		strSql += " WHERE WRITER LIKE '"+ strSelVal +"%'";
+	else
+		strSql += " ";
+	
+	strSql += " ORDER BY IDX DESC";	
 	ResultSet rs = stmt.executeQuery(strSql);
 %>
 
 <body>
 <div class="center">
-	<h2> °Ô½Ã±Û ¸ñ·Ï </h2>
+	<h2> ê²Œì‹œê¸€ ëª©ë¡ </h2>
 	<table>
 	<tr>
-		<th width = "50px">¹øÈ£</th>
-		<th width = "200px">Á¦¸ñ</th>
-		<th width = "100px">ÀÛ¼ºÀÚ</th>
-		<th width = "100px">³¯Â¥</th>
-		<th width = "100px">Á¶È¸ ¼ö</th>		
+		<th width = "50px">ë²ˆí˜¸</th>
+		<th width = "200px">ì œëª©</th>
+		<th width = "100px">ì‘ì„±ì</th>
+		<th width = "100px">ë‚ ì§œ</th>
+		<th width = "100px">ì¡°íšŒ ìˆ˜</th>		
 	</tr>
 <%
 	while(rs.next())
@@ -81,19 +94,29 @@ try
 	}
 %>
 	</table>
-	<a class="btn" href="Write.jsp">±Û¾²±â</a>
+	<br>
+	<form action="list.jsp" method="post">
+	<select name ="SelKey">
+		<option value="0"></option>
+		<option value="1">ì œëª©</option>
+		<option value="2">ì‘ì„±ì</option>
+	</select>
+	<input type="text" name="SelVal" value=<%=strSelVal%>>
+	<input type="submit" value="ê²€ìƒ‰">	
+	</form>
+	
+	<a class="btn" href="Write.jsp">ê¸€ì“°ê¸°</a>
 </div>
 
 <%
-	// Å¬·ÎÁî
+	// í´ë¡œì¦ˆ
 	con.close();
 
 	}
 	catch (Exception e)
 	{
-	out.println("db ¿¡·¯!<hr>");
-	out.println(e.getMessage());
-	e.printStackTrace();
+		out.println("ì˜¤ë¥˜ : " + e.getMessage());
+		e.printStackTrace();
 	}
 %>
 </body>

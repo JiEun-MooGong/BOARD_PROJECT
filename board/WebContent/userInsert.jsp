@@ -1,59 +1,59 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ page import ="java.sql.*" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
-<title> ¹«°øÀÌÀÇ °Ô½ÃÆÇ ¸¸µé±â - È¸¿ø°¡ÀÔ </title>
+<title> ë¬´ê³µì´ì˜ ê²Œì‹œíŒ ë§Œë“¤ê¸° - íšŒì›ê°€ì… </title>
 </head>
 <% 
 	request.setCharacterEncoding("euc-kr");
 	
 	try
 	{
-		//º¯¼ö ¼±¾ğ
+		//ë³€ìˆ˜ ì„ ì–¸
 		String strId =  request.getParameter("ID");
 		String strPass = request.getParameter("PASSWORD");
 		//String strPassCk = request.getParameter("RE_PASSWORD");
 		String strName = request.getParameter("NAME");
 		String strEmail = request.getParameter("EMAIL");
 		
-		//À¯È¿¼º °Ë»ç
+		//ìœ íš¨ì„± ê²€ì‚¬
 		if(strId==""||strId==null)
-		{ out.println("IDÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä.<hr>");
+		{ out.println("IDì„ ì…ë ¥í•´ì£¼ì„¸ìš”.<hr>");
 		  out.print("<input type=\"button\" value=\"BACK\" onClick=\"history.go(-1)\">");
 		  return;}
 		if(strPass==""||strPass==null)
-		{ out.println("ºñ¹Ğ¹øÈ£¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.<hr>");
+		{ out.println("ë¹„ë°€ë²ˆí˜¸ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”.<hr>");
 			out.print("<input type=\"button\" value=\"BACK\" onClick=\"history.go(-1)\">");
 		  return;}
 		if(strName==""||strName==null)
-		{ out.println("ÀÌ¸§À» ÀÔ·ÂÇØÁÖ¼¼¿ä.<hr>");
+		{ out.println("ì´ë¦„ì„ ì…ë ¥í•´ì£¼ì„¸ìš”.<hr>");
 			out.print("<input type=\"button\" value=\"BACK\" onClick=\"history.go(-1)\">");
 		  return;}		
 		
-		// DB Á¢¼Ó
+		// DB ì ‘ì†
 		String strDN = "oracle.jdbc.driver.OracleDriver"; 
 		String url ="jdbc:oracle:thin:board@//localhost:1521/xe";
 		Class.forName(strDN);
 		Connection con = DriverManager.getConnection(url,"board","board");
-		out.println("db Á¢¼Ó ¼º°ø");
+		out.println("db ì ‘ì† ì„±ê³µ");
 		
-		//ÀÔ·Â
+		//ì…ë ¥
 		Statement stmt = con.createStatement();
 		String strSql = "";
 		strSql += "INSERT INTO BOARD_USER";
 		strSql += "(USER_ID, PASSWORD, NAME, EMAIL)";
 		strSql += "VALUES('"+strId+"', '"+strPass+"','"+strName+"','"+strEmail+"')";
 		stmt.executeUpdate(strSql);
-		out.println("db ÀúÀå ¿Ï·á µÇ¾ú½À´Ï´Ù.");
+		out.println("db ì €ì¥ ì™„ë£Œ ë˜ì—ˆìŠµë‹ˆë‹¤.");
 		out.print("<script>location.href='Login.html';</script>");
-		// Å¬·ÎÁî
+		// í´ë¡œì¦ˆ
 		con.close();
 	}
 	catch (Exception e)
 	{
-		out.println("db ¿¡·¯!<hr>");
+		out.println("db ì—ëŸ¬!<hr>");
 		out.println(e.getMessage());
 		e.printStackTrace();
 	}

@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ page import ="java.sql.*" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
-<title> ¹«°øÀÌÀÇ °Ô½ÃÆÇ ¸¸µé±â - °Ô½Ã±Û ¼öÁ¤ </title>
+<meta charset="utf-8">
+<title> ë¬´ê³µì´ì˜ ê²Œì‹œíŒ ë§Œë“¤ê¸° - ê²Œì‹œê¸€ ìˆ˜ì • </title>
 <style>
 label {
             float: left;
@@ -14,13 +14,13 @@ label {
 </style>
 </head>
 <body>
-<h2>°Ô½Ã±Û</h2>
+<h2>ê²Œì‹œê¸€</h2>
 <% 
 try
 {
 	String strIdx = request.getParameter("idx");
 	
-	// DB Á¢¼Ó
+	// DB ì ‘ì†
 	String strDN = "oracle.jdbc.driver.OracleDriver"; 
 	String url ="jdbc:oracle:thin:board@//localhost:1521/xe";
 	Class.forName(strDN);
@@ -39,36 +39,36 @@ try
 	<table border="1">
 <% 
 	out.print("<tr>");
-	out.print("<th>¹øÈ£</th>");
+	out.print("<th>ë²ˆí˜¸</th>");
 	out.print("<td>" + rs.getString("IDX") + "</td>");
 	out.print("</tr>");
 	out.print("<tr>");
-	out.print("<th>ÀÛ¼ºÀÚ</th>");
+	out.print("<th>ì‘ì„±ì</th>");
 	out.print("<td>" + rs.getString("WRITER") + "</td>");
 	out.print("</tr>");
 	out.print("<tr>");
-	out.print("<th>³¯Â¥</th>");
+	out.print("<th>ë‚ ì§œ</th>");
 	out.print("<td>" + rs.getString("REGDATE") + "</td>");
 	out.print("</tr>");
 	out.print("<tr>");
-	out.print("<th>Á¶È¸¼ö</th>");
+	out.print("<th>ì¡°íšŒìˆ˜</th>");
 	out.print("<td>" + rs.getString("COUNT") + "</td>");
 	out.print("</tr>");
 	out.print("<tr>");
-	out.print("<th>Á¦¸ñ</th>");
+	out.print("<th>ì œëª©</th>");
 	out.print("<td> <input type=\'text\' name=\'title\' id\'title\' value=\'" + rs.getString("TITLE") + "\'></td>");
 	out.print("</tr>");
 	out.print("<tr>");
-	out.print("<th>³»¿ë</th>");
+	out.print("<th>ë‚´ìš©</th>");
 	out.print("<td> <textarea rows=\'10\' cols=\'40\' name=\'content\' id=\'content\''>" + rs.getString("CONTENT") + "</textarea> </td>");
 	out.print("</tr>");
 %>
 	</table>
 	<br>
-	<button type="submit">È®ÀÎ</button>
-	<%-- <a href="update.jsp?idx=<%=rs.getString("IDX")%>">È®ÀÎ </a> --%> 
+	<button type="submit">í™•ì¸</button>
+	<%-- <a href="update.jsp?idx=<%=rs.getString("IDX")%>">í™•ì¸ </a> --%> 
 	</form>
-	<a href="content.jsp?idx=<%=rs.getString("IDX")%>">Ãë¼Ò </a>
+	<a href="content.jsp?idx=<%=rs.getString("IDX")%>">ì·¨ì†Œ </a>
 	</body>
 <%
 	}
@@ -78,7 +78,7 @@ try
 	}
 	catch (Exception e)
 	{
-	out.println("db ¿¡·¯!<hr>");
+	out.println("db ì—ëŸ¬!<hr>");
 	out.println(e.getMessage());
 	e.printStackTrace();
 	}

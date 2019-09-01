@@ -1,9 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
-<title>  ¹«°øÀÌÀÇ °Ô½ÃÆÇ ¸¸µé±â - °Ô½Ã±Û ÀÛ¼º </title>
+<meta charset="utf-8">
+<title>  ë¬´ê³µì´ì˜ ê²Œì‹œíŒ ë§Œë“¤ê¸° - ê²Œì‹œê¸€ ìž‘ì„± </title>
 <style>
 label {
             float: left;
@@ -16,13 +16,13 @@ label {
     String strUserId = (String)session.getAttribute("userid");
 %>
 <body>
-<h2> °Ô½Ã±Û ¾²±â </h2>
+<h2> ê²Œì‹œê¸€ ì“°ê¸° </h2>
 	<form action="insert.jsp" method="post" onsubmit="return formCheck();">
-	<label for="title">Á¦¸ñ </label>
+	<label for="title">ì œëª© </label>
 	<input type ="text" name ="title" id ="title"/><br>
-	<label for="writer">ÀÛ¼ºÀÚ </label>
+	<label for="writer">ìž‘ì„±ìž </label>
 	<input type ="text" name ="writer" id ="writer" value="<%=strUserId%>" readonly /><br>
-	<label for="content">³»¿ë </label>
+	<label for="content">ë‚´ìš© </label>
 	<textarea rows="10" cols="40" name="content" id="content"></textarea>	
 	<br><br>
     <input type ="submit" name ="submit"/>

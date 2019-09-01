@@ -1,13 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ page import ="java.sql.*" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
-<title> ¹«°øÀÌÀÇ °Ô½ÃÆÇ ¸¸µé±â - °Ô½Ã±Û »èÁ¦ </title>
+<meta charset="utf-8">
+<title> ë¬´ê³µì´ì˜ ê²Œì‹œíŒ ë§Œë“¤ê¸° - ê²Œì‹œê¸€ ì‚­ì œ </title>
 </head>
 <script type="text/javascript">
-if(confirm("»èÁ¦ ÇÏ½Ã°Ú½À´Ï±î?"))
+if(confirm("ì‚­ì œ í•˜ì‹œê² ìŠµë‹ˆê¹Œ?"))
 {	
 }
 esle
@@ -21,24 +21,24 @@ try
 {	
 	String strIdx = request.getParameter("idx");
 	
-	// DB Á¢¼Ó
+	// DB ì ‘ì†
 	String strDN = "oracle.jdbc.driver.OracleDriver"; 
 	String url ="jdbc:oracle:thin:board@//localhost:1521/xe";
 	Class.forName(strDN);
 	Connection con = DriverManager.getConnection(url,"board","board");
 		
-	//ÀÔ·Â
+	//ì…ë ¥
 	Statement stmt = con.createStatement();
 	String strSql = "DELETE FROM BOARD WHERE IDX = " + strIdx;	
 	stmt.executeUpdate(strSql);
-	out.println("»èÁ¦ µÇ¾ú½À´Ï´Ù.");
+	out.println("ì‚­ì œ ë˜ì—ˆìŠµë‹ˆë‹¤.");
 	
-	// Å¬·ÎÁî
+	// í´ë¡œì¦ˆ
 	con.close();
 }
 catch (Exception e)
 {
-	out.println("db ¿¡·¯!<hr>");
+	out.println("db ì—ëŸ¬!<hr>");
 	out.println(e.getMessage());
 	e.printStackTrace();
 }

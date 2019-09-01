@@ -1,58 +1,58 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ page import ="java.sql.*" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
-<title> ¹«°øÀÌÀÇ °Ô½ÃÆÇ ¸¸µé±â - °Ô½Ã±Û µî·Ï </title>
+<meta charset="utf-8">
+<title> ë¬´ê³µì´ì˜ ê²Œì‹œíŒ ë§Œë“¤ê¸° - ê²Œì‹œê¸€ ë“±ë¡ </title>
 <% 
 
 	request.setCharacterEncoding("euc-kr");
 
-	//º¯¼ö ¼±¾ğ
+	//ë³€ìˆ˜ ì„ ì–¸
 	int idx = 1;
 	String strTitle = request.getParameter("title");
 	String strWriter = request.getParameter("writer");
 	String strContent = request.getParameter("content");
 	int iCnt = 31;
 	
-	//À¯È¿¼º °Ë»ç
+	//ìœ íš¨ì„± ê²€ì‚¬
 	if(strTitle==""||strTitle==null)
-	{ out.println("Á¦¸ñÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä.<hr>");
+	{ out.println("ì œëª©ì„ ì…ë ¥í•´ì£¼ì„¸ìš”.<hr>");
 	  out.print("<input type=\"button\" value=\"BACK\" onClick=\"history.go(-1)\">");
 	  return;}
 	if(strWriter==""||strWriter==null)
-	{ out.println("ÀÛ¼ºÀÚ¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.<hr>");
+	{ out.println("ì‘ì„±ìë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”.<hr>");
 		out.print("<input type=\"button\" value=\"BACK\" onClick=\"history.go(-1)\">");
 	  return;}
 	if(strContent==""||strContent==null)
-	{ out.println("³»¿ëÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä.<hr>");
+	{ out.println("ë‚´ìš©ì„ ì…ë ¥í•´ì£¼ì„¸ìš”.<hr>");
 		out.print("<input type=\"button\" value=\"BACK\" onClick=\"history.go(-1)\">");
 	  return;}
 	
 	try
 	{
-		// DB Á¢¼Ó
+		// DB ì ‘ì†
 		String strDN = "oracle.jdbc.driver.OracleDriver"; 
 		String url ="jdbc:oracle:thin:board@//localhost:1521/xe";
 		Class.forName(strDN);
 		Connection con = DriverManager.getConnection(url,"board","board");
 		
-		//ÀÔ·Â
+		//ì…ë ¥
 		Statement stmt = con.createStatement();
 		String strSql = "";
 		strSql += "INSERT INTO BOARD";
 		strSql += "(IDX, TITLE,WRITER,REGDATE,COUNT,CONTENT)";
 		strSql += "VALUES(BOARD_SEQ.NEXTVAL, '"+strTitle+"','"+strWriter+"',(SELECT TO_CHAR(SYSDATE, 'YYYY-MM-DD') FROM DUAL),1,'"+strContent+"')";
 		stmt.executeUpdate(strSql);
-		out.println("±Û µî·Ï ¿Ï·á.");
+		out.println("ê¸€ ë“±ë¡ ì™„ë£Œ.");
 		
-		// Å¬·ÎÁî
+		// í´ë¡œì¦ˆ
 		con.close();
 	}
 	catch (Exception e)
 	{
-		out.println("db ¿¡·¯!<hr>");
+		out.println("db ì—ëŸ¬!<hr>");
 		out.println(e.getMessage());
 		e.printStackTrace();
 	}

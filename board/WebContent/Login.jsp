@@ -1,38 +1,38 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ page import ="java.sql.*" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
-<title> ¹«°øÀÌÀÇ °Ô½ÃÆÇ ¸¸µé±â - ·Î±×ÀÎ </title>
+<title> ë¬´ê³µì´ì˜ ê²Œì‹œíŒ ë§Œë“¤ê¸° - ë¡œê·¸ì¸ </title>
   </head>
   <% 
 	request.setCharacterEncoding("euc-kr");
 	
 	try
 	{
-		//º¯¼ö ¼±¾ğ
+		//ë³€ìˆ˜ ì„ ì–¸
 		String strId =  request.getParameter("ID");
 		String strPass = request.getParameter("PASSWORD");
 		String strName = request.getParameter("NAME");
 		
-		//À¯È¿¼º °Ë»ç
+		//ìœ íš¨ì„± ê²€ì‚¬
 		if(strId==""||strId==null)
-		{ out.println("IDÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä.<hr>");
+		{ out.println("IDì„ ì…ë ¥í•´ì£¼ì„¸ìš”.<hr>");
 		  out.print("<input type=\"button\" value=\"BACK\" onClick=\"history.go(-1)\">");
 		  return;}
 		if(strPass==""||strPass==null)
-		{ out.println("ºñ¹Ğ¹øÈ£¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.<hr>");
+		{ out.println("ë¹„ë°€ë²ˆí˜¸ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”.<hr>");
 			out.print("<input type=\"button\" value=\"BACK\" onClick=\"history.go(-1)\">");
 		  return;}		
 		
-		// DB Á¢¼Ó
+		// DB ì ‘ì†
 		String strDN = "oracle.jdbc.driver.OracleDriver"; 
 		String url ="jdbc:oracle:thin:board@//localhost:1521/xe";
 		Class.forName(strDN);
 		Connection con = DriverManager.getConnection(url,"board","board");
 		
-		//ÀÔ·Â
+		//ì…ë ¥
 		Statement stmt = con.createStatement();
 		String strSql = "";
 		strSql += "SELECT * FROM BOARD_USER WHERE USER_ID ='" + strId + "' AND PASSWORD = '" + strPass + "'";		
@@ -44,23 +44,23 @@
 		}
 		
 		if(strName==""||strName==null)
-		{ out.println("»ç¿ëÀÚ Á¤º¸°¡ ¾ø½À´Ï´Ù.<hr>");
+		{ out.println("ì‚¬ìš©ì ì •ë³´ê°€ ì—†ìŠµë‹ˆë‹¤.<hr>");
 		  out.print("<input type=\"button\" value=\"BACK\" onClick=\"history.go(-1)\">");
 		  }	
 		else
 		{
-			out.println(strName + "´Ô È¯¿µÇÕ´Ï´Ù.<hr>");
+			out.println(strName + "ë‹˜ í™˜ì˜í•©ë‹ˆë‹¤.<hr>");
 			session.setAttribute("userid",strId);
 			response.sendRedirect("list.jsp");
 			//out.print("<input type=\"button\" value=\"OK\" onClick=\"location.href='list.jsp'\">");
 		}
 		
-		// Å¬·ÎÁî
+		// í´ë¡œì¦ˆ
 		con.close();
 	}
 	catch (Exception e)
 	{
-		out.println("db ¿¡·¯!<hr>");
+		out.println("db ì—ëŸ¬!<hr>");
 		out.println(e.getMessage());
 		e.printStackTrace();
 	}

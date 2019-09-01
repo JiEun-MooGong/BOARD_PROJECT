@@ -1,9 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
-<title> È¸¿ø°¡ÀÔ </title>
+<title> íšŒì›ê°€ì… </title>
 <style>
       table {border-collapse: collapse; }
       th {background-color: yellowgreen; border:1px solid black; padding: 10px; width: 150px;}
@@ -13,7 +13,7 @@
 
   <body>
 	<form action="userInsert.jsp" method="post">
-      <h2> È¸¿ø°¡ÀÔ </h2>
+      <h2> íšŒì›ê°€ì… </h2>
       <br>
       <table>
         <thead>
@@ -29,14 +29,14 @@
           </tr>
           <!-- 
           <tr>          
-            <th> PASSWORD È®ÀÎ </th>
-            <td> <input type="password" id="txtPassCk" placeholder="PASSWORD¸¦ ´Ù½Ã ÀÔ·ÂÇØÁÖ¼¼¿ä" onchange="txtPassCk_Change()" name="RE_PASSWORD" />
+            <th> PASSWORD í™•ì¸ </th>
+            <td> <input type="password" id="txtPassCk" placeholder="PASSWORDë¥¼ ë‹¤ì‹œ ì…ë ¥í•´ì£¼ì„¸ìš”" onchange="txtPassCk_Change()" name="RE_PASSWORD" />
               <span id = "pnPassCk"></span>
             </td>
           </tr> 
            -->
           <tr>
-            <th> ÀÌ¸§ </th>
+            <th> ì´ë¦„ </th>
             <td> <input type="text" id="txtName" name="NAME" /> </td>
           </tr>
           <tr>
@@ -46,7 +46,7 @@
         </tbody>
       </table>
       <br>
-	<button type="submit">È®ÀÎ</button>
+	<button type="submit">í™•ì¸</button>
 	<input type="button" value="BACK" onClick="history.go(-1)">
     </form>
   </body>

@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ page import ="java.sql.*" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
-<title> ¹«°øÀÌÀÇ °Ô½ÃÆÇ ¸¸µé±â - °Ô½Ã±Û ¼öÁ¤ </title>
+<meta charset="utf-8">
+<title> ë¬´ê³µì´ì˜ ê²Œì‹œíŒ ë§Œë“¤ê¸° - ê²Œì‹œê¸€ ìˆ˜ì • </title>
 </head>
 <% 
 request.setCharacterEncoding("euc-kr");
@@ -15,7 +15,7 @@ String strContent = request.getParameter("content");
 
 try
 {	
-	// DB Á¢¼Ó
+	// DB ì ‘ì†
 	String strDN = "oracle.jdbc.driver.OracleDriver"; 
 	String url ="jdbc:oracle:thin:board@//localhost:1521/xe";
 	Class.forName(strDN);
@@ -24,7 +24,7 @@ try
 	out.println("inext" + strIdx);
 	out.println("content" + strContent);
 	
-	//ÀÔ·Â
+	//ì…ë ¥
 	Statement stmt = con.createStatement();
 	String strSql = "";
 	strSql += "UPDATE BOARD SET";
@@ -32,14 +32,14 @@ try
 	strSql += " CONTENT='" + strContent + "'";
 	strSql += " WHERE IDX = " + strIdx;
 	stmt.executeUpdate(strSql);
-	out.println("¼öÁ¤ µÇ¾ú½À´Ï´Ù.");
+	out.println("ìˆ˜ì • ë˜ì—ˆìŠµë‹ˆë‹¤.");
 	
-	// Å¬·ÎÁî
+	// í´ë¡œì¦ˆ
 	con.close();
 }
 catch (Exception e)
 {
-	out.println("db ¿¡·¯!<hr>");
+	out.println("db ì—ëŸ¬!<hr>");
 	out.println(e.getMessage());
 	e.printStackTrace();
 }
