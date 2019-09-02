@@ -7,7 +7,7 @@
 <title> 무공이의 게시판 만들기 - 게시글 수정 </title>
 </head>
 <% 
-request.setCharacterEncoding("euc-kr");
+request.setCharacterEncoding("utf-8");
 
 String strIdx = request.getParameter("idx");
 String strTitle = request.getParameter("title");

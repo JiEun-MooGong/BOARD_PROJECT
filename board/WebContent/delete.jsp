@@ -6,19 +6,10 @@
 <meta charset="utf-8">
 <title> 무공이의 게시판 만들기 - 게시글 삭제 </title>
 </head>
-<script type="text/javascript">
-if(confirm("삭제 하시겠습니까?"))
-{	
-}
-esle
-{
-	location.href=history.go(-1);
-	return;
-}
-</script>
 <% 
 try
 {	
+	request.setCharacterEncoding("utf-8");
 	String strIdx = request.getParameter("idx");
 	
 	// DB 접속
@@ -44,7 +35,7 @@ catch (Exception e)
 }
 finally
 {
-	out.print("<script>location.href='index.jsp';</script>");
+	out.print("<script>location.href='list.jsp';</script>");
 }
 %>
 <body>

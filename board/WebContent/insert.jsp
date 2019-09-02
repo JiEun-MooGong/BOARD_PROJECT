@@ -7,7 +7,7 @@
 <title> 무공이의 게시판 만들기 - 게시글 등록 </title>
 <% 
 
-	request.setCharacterEncoding("euc-kr");
+	request.setCharacterEncoding("utf-8");
 
 	//변수 선언
 	int idx = 1;

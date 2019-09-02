@@ -3,7 +3,6 @@
 <%@ page import="javax.sql.*" %>
 <%@ page import="javax.naming.*" %>
 
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,7 +39,17 @@ try
 //  ResultSet rs = pstmt.executeQuery();
 
 	String strSelKey = request.getParameter("SelKey");
+	if(strSelKey != null)
+	{
+		strSelKey = new String(strSelKey.getBytes("ISO-8859-1"), "UTF-8");
+	}
+	
 	String strSelVal = request.getParameter("SelVal");
+	if(strSelVal != null)
+	{
+		strSelVal = new String(strSelVal.getBytes("ISO-8859-1"), "UTF-8");
+	}
+	
 	String strUserId = (String)session.getAttribute("userid");
 	
 	out.println(strUserId + " ");
@@ -58,15 +67,23 @@ try
 	strSql += "SELECT * FROM BOARD";
 
 	if(strSelKey == null)
+	{
 		strSql += " ";
+	}
 	else if(strSelKey.equals("1"))
-		strSql += " WHERE TITLE LIKE '"+ strSelVal +"%'"; 
+	{
+		strSql += " WHERE TITLE LIKE '%"+ strSelVal +"%'";
+	}
 	else if(strSelKey.equals("2"))
-		strSql += " WHERE WRITER LIKE '"+ strSelVal +"%'";
+	{
+		strSql += " WHERE WRITER LIKE '%"+ strSelVal +"%'";
+	}
 	else
+	{
 		strSql += " ";
+	}
 	
-	strSql += " ORDER BY IDX DESC";	
+	strSql += " ORDER BY IDX DESC";
 	ResultSet rs = stmt.executeQuery(strSql);
 %>
 
@@ -96,11 +113,12 @@ try
 	</table>
 	<br>
 	<form action="list.jsp" method="post">
-	<select name ="SelKey">
-		<option value="0"></option>
-		<option value="1">제목</option>
-		<option value="2">작성자</option>
+	<select id= "SelOption" name ="SelKey">
+		<option value="0" <% if(strSelKey == null ) out.print("selected"); %>></option>
+		<option value="1" <% if(strSelKey != null && strSelKey.equals("1")) out.print("selected"); %>>제목</option>
+		<option value="2" <% if(strSelKey != null && strSelKey.equals("2")) out.print("selected"); %>>작성자</option>
 	</select>
+	
 	<input type="text" name="SelVal" value=<%=strSelVal%>>
 	<input type="submit" value="검색">	
 	</form>

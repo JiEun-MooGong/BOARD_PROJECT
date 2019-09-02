@@ -7,7 +7,7 @@
 <title> 무공이의 게시판 만들기 - 회원가입 </title>
 </head>
 <% 
-	request.setCharacterEncoding("euc-kr");
+request.setCharacterEncoding("utf-8");
 	
 	try
 	{

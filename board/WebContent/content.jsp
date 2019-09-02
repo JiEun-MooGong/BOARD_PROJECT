@@ -6,6 +6,21 @@
 <meta charset="utf-8">
 <title> 무공이의 게시판 만들기 - 게시글 보기 </title>
 </head>
+<script type="text/javascript">
+function deleteCheck(str)
+{
+	if(confirm("삭제 하시겠습니까?"))
+	{	
+		location.href="delete.jsp?idx=" + str;
+	}
+	else
+	{
+		alert("삭제 취소");		
+		//location.href=history.go(-1);
+		return;
+	}
+}
+</script>
 <% 
 try
 {
@@ -66,7 +81,8 @@ try
 	if(strWriter.equals(strUserId))
 	{
 		out.print("<a href=\"reWrite.jsp?idx=" + rs.getString("IDX") + "\">수정 </a>");
-		out.print("<a href=\"delete.jsp?idx=" + rs.getString("IDX") + "\">삭제 </a>");
+		//out.print("<a href=\"delete.jsp?idx=" + rs.getString("IDX") + "\">삭제 </a>");
+		out.print("<a href=\"javascript:deleteCheck("+rs.getString("IDX")+");\">삭제 </a>");
 	}
 %>
 	<a href="list.jsp">목록으로</a>
