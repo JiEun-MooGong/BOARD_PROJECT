@@ -42,12 +42,13 @@ try
 	strSql = "SELECT * FROM BOARD WHERE IDX = " + strIdx;	
 	rs = stmt.executeQuery(strSql);
 	
-	while(rs.next())
-	{
+	
 %>
 <body>
 <h1>게시글</h1>
 <% 
+while(rs.next())
+{	
 	out.print("<table border=\"1\">");
 	out.print("<tr>");
 	out.print("<th>번호</th>");
@@ -80,15 +81,38 @@ try
 	
 	if(strWriter.equals(strUserId))
 	{
-		out.print("<a href=\"reWrite.jsp?idx=" + rs.getString("IDX") + "\">수정 </a>");
+		out.print("<a href=\"reWrite.jsp?idx=" + rs.getString("IDX") + "\">수정 </a> &nbsp;");
 		//out.print("<a href=\"delete.jsp?idx=" + rs.getString("IDX") + "\">삭제 </a>");
-		out.print("<a href=\"javascript:deleteCheck("+rs.getString("IDX")+");\">삭제 </a>");
+		out.print("<a href=\"javascript:deleteCheck("+rs.getString("IDX")+");\">삭제 </a> &nbsp;");
 	}
-%>
+}
+%>  
 	<a href="list.jsp">목록으로</a>
-	</body>
+	<hr>
+	<form action="insertComment.jsp?idx=<%=strIdx%>" method="post" onsubmit="return formCheck();">
+	<label for="content">내용 </label>
+	<textarea rows="5" cols="100" name="content" id="content"></textarea>
+    <input type ="submit" name ="submit" value ="댓글달기"/>        
+	</form>
+	<hr>
+	
 <%
+	strSql = "SELECT * FROM BOARD_COMMENT WHERE IDX = " + strIdx + " ORDER BY LV, SEQ";	
+	rs = stmt.executeQuery(strSql);
+
+	out.print("<table border=\"1\">");			
+	while(rs.next())
+	{	
+		out.print("<tr>");
+		out.print("<td>" + rs.getString("ID") + "</td>");
+		out.print("<td>" + rs.getString("COMMENTS") + "</td>");
+		out.print("<td>" + rs.getString("REDATE") + "</td>");
+		out.print("</tr>");
 	}
+	out.print("</table>");
+%>
+</body>
+<%
 
 	con.close();
 

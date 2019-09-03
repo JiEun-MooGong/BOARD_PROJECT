@@ -99,10 +99,17 @@ try
 		<th width = "100px">조회 수</th>		
 	</tr>
 <%
+	
+	// 번호
+	int iSeq = 0; 
+	
 	while(rs.next())
 	{
+		iSeq = iSeq + 1;
+		
 		out.print("<tr>");
-		out.print("<td>" + rs.getString("IDX") + "</td>");
+		//out.print("<td>" + rs.getString("IDX") + "</td>");
+		out.print("<td>" + iSeq + "</td>");
 		out.print("<td>" + "<a href='content.jsp?idx="+ rs.getString("IDX") + "'>" + rs.getString("TITLE")+"</a>" + "</td>");
 		out.print("<td>" + rs.getString("WRITER") + "</td>");
 		out.print("<td>" + rs.getString("REGDATE") + "</td>");
